@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Pebble Cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="brand-mark"></span>Pebble</div>
+  <div class="secure-flag">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    Secure checkout
+  </div>
+</div>
+
+<div class="checkout-shell">
+  <section class="form-col">
+    <h1 class="page-title">Checkout</h1>
+    <p class="page-sub">Enter your details below to complete your order.</p>
+
+    <div class="block">
+      <div class="block-head"><span class="block-num">1</span><span class="block-title">Contact</span></div>
+      <div class="field" id="f-email">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com">
+        <div class="field-error">Enter a valid email address.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="block-num">2</span><span class="block-title">Shipping address</span></div>
+      <div class="field-row">
+        <div class="field" id="f-first"><label>First name</label><input type="text" placeholder="Jordan"><div class="field-error">Required.</div></div>
+        <div class="field" id="f-last"><label>Last name</label><input type="text" placeholder="Avery"><div class="field-error">Required.</div></div>
+      </div>
+      <div class="field" id="f-address"><label>Street address</label><input type="text" placeholder="123 Market Street"><div class="field-error">Required.</div></div>
+      <div class="field"><label>Apt, suite, etc. (optional)</label><input type="text" placeholder="Apt 4B"></div>
+      <div class="field-row">
+        <div class="field" id="f-city"><label>City</label><input type="text" placeholder="Calgary"><div class="field-error">Required.</div></div>
+        <div class="field" id="f-zip"><label>Postal code</label><input type="text" placeholder="T2P 1J9"><div class="field-error">Required.</div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Province</label>
+          <select><option>Alberta</option><option>British Columbia</option><option>Ontario</option><option>Quebec</option></select>
+        </div>
+        <div class="field"><label>Country</label>
+          <select><option>Canada</option><option>United States</option><option>United Kingdom</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="block-num">3</span><span class="block-title">Delivery method</span></div>
+      <label class="delivery-option selected" data-price="0">
+        <input type="radio" name="delivery" checked>
+        <span class="delivery-text">
+          <div class="delivery-name">Standard shipping</div>
+          <div class="delivery-eta">5–7 business days</div>
+        </span>
+        <span class="delivery-price">Free</span>
+      </label>
+      <label class="delivery-option" data-price="8">
+        <input type="radio" name="delivery">
+        <span class="delivery-text">
+          <div class="delivery-name">Express shipping</div>
+          <div class="delivery-eta">2–3 business days</div>
+        </span>
+        <span class="delivery-price">$8.00</span>
+      </label>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><span class="block-num">4</span><span class="block-title">Payment</span></div>
+      <button class="wallet-btn" type="button">Pay with Apple Pay</button>
+      <button class="wallet-btn" type="button">Pay with PayPal</button>
+      <p class="wallet-note">— or pay with card —</p>
+      <div class="field" id="f-cardname" style="margin-top:14px;"><label>Name on card</label><input type="text" placeholder="Jordan Avery"><div class="field-error">Required.</div></div>
+      <div class="field" id="f-cardnum">
+        <label>Card number</label>
+        <div class="card-input-wrap">
+          <input type="text" id="cardNumber" placeholder="1234 1234 1234 1234" maxlength="19" inputmode="numeric">
+          <span class="card-type-icon" id="cardType">VISA</span>
+        </div>
+        <div class="field-error">Enter a valid card number.</div>
+      </div>
+      <div class="field-row">
+        <div class="field" id="f-exp"><label>Expiry</label><input type="text" id="expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric"><div class="field-error">Required.</div></div>
+        <div class="field" id="f-cvc"><label>CVC</label><input type="text" placeholder="123" maxlength="4" inputmode="numeric"><div class="field-error">Required.</div></div>
+      </div>
+    </div>
+
+    <button class="place-order" id="placeOrderBtn">
+      <span class="label" id="payLabel">Pay $34.00</span>
+      <span class="spinner"></span>
+    </button>
+    <p class="guarantee-note">Free 30-day returns · Encrypted payment · No account required</p>
+  </section>
+
+  <aside class="summary-col" id="summaryCol">
+    <div class="summary-toggle" id="summaryToggle">
+      <span class="summary-toggle-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Order summary
+      </span>
+      <span class="summary-toggle-total" id="mobileTotal">$34.00</span>
+    </div>
+
+    <div class="summary-title">Order summary</div>
+    <div class="product-preview">
+      <div class="case-render" id="caseRender" style="--swatch:#3E4A5C;"></div>
+      <div class="product-meta">
+        <div class="product-name">Pebble Grip Case — iPhone 15 Pro</div>
+        <div class="product-variant" id="variantLabel">Colour: Slate</div>
+        <div class="swatches">
+          <span class="swatch selected" style="background:#3E4A5C;" data-color="#3E4A5C" data-name="Slate"></span>
+          <span class="swatch" style="background:#B5744A;" data-color="#B5744A" data-name="Clay"></span>
+          <span class="swatch" style="background:#5C6E52;" data-color="#5C6E52" data-name="Moss"></span>
+          <span class="swatch" style="background:#17161B;" data-color="#17161B" data-name="Ink"></span>
+          <span class="swatch" style="background:#E4DFD3;" data-color="#E4DFD3" data-name="Bone"></span>
+        </div>
+        <div class="qty-row">
+          <div class="qty-stepper">
+            <button type="button" id="qtyMinus">–</button>
+            <span id="qtyVal">1</span>
+            <button type="button" id="qtyPlus">+</button>
+          </div>
+          <span class="item-price" id="itemPrice">$34.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo-row">
+      <input type="text" id="promoInput" placeholder="Promo code">
+      <button class="promo-apply" id="promoBtn">Apply</button>
+    </div>
+    <div class="promo-msg" id="promoMsg"></div>
+
+    <div class="cost-line"><span>Subtotal</span><span id="subtotalVal">$34.00</span></div>
+    <div class="cost-line" id="discountLine" style="display:none;"><span>Promo (CASE10)</span><span id="discountVal">–$3.40</span></div>
+    <div class="cost-line"><span>Shipping</span><span id="shippingVal">Free</span></div>
+    <div class="cost-line"><span>Estimated tax</span><span id="taxVal">$1.70</span></div>
+    <div class="cost-total"><span>Total</span><span id="totalVal">$35.70</span></div>
+
+    <div class="trust-row">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Encrypted
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg>
+        Verified store
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><path d="M21 3v6h-6"/></svg>
+        30-day returns
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-check">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <div class="success-title">Order placed</div>
+    <div class="success-sub">A confirmation has been sent to your email. Your case ships within 1 business day.</div>
+    <div class="success-order">Order #PB-48213</div>
+    <button class="success-close" id="successClose">Done</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
